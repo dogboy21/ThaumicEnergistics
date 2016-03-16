@@ -532,15 +532,22 @@ public abstract class ThEPartBase
 		// Server side?
 		if( EffectiveSide.isServerSide() )
 		{
-			// Get the energy grid
-			IEnergyGrid eGrid = this.gridBlock.getEnergyGrid();
-			if( eGrid != null )
+			if ( this.gridBlock != null )
 			{
-				this.isPowered = eGrid.isNetworkPowered();
+				// Get the energy grid
+				IEnergyGrid eGrid = this.gridBlock.getEnergyGrid();
+				if( eGrid != null )
+				{
+					this.isPowered = eGrid.isNetworkPowered();
+				}
+				else
+				{
+					this.isPowered = false;
+				}	
 			}
 			else
 			{
-				this.isPowered = false;
+				this.isPowered = false;	
 			}
 		}
 
